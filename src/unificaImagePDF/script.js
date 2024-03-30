@@ -10,7 +10,7 @@ document.getElementById('mergeBtn').addEventListener('click', async () => {
     const pdfDoc = await PDFLib.PDFDocument.create();
 
     try {
-        for (let i = 0; i < files.length; i++) { // Percorre os arquivos na ordem original
+        for (let i = 0; i < files.length; i++) { // Percorre os arquivos na ordem original de seleção
             const file = files[i];
             const reader = new FileReader();
             const dataUrl = await new Promise((resolve) => {
@@ -62,8 +62,15 @@ document.getElementById('mergeBtn').addEventListener('click', async () => {
         link.setAttribute('download', 'merged.pdf');
         output.appendChild(link);
 
-        // Limpar a lista de seleção de arquivos
-        fileInput.value = null;
+        // Remover o botão de download após o download
+        link.addEventListener('click', () => {
+            output.removeChild(link);
+        });
+
+        // Limpar a lista de seleção de arquivos de forma assíncrona
+        setTimeout(() => {
+            fileInput.value = null;
+        }, 100);
     } catch (error) {
         console.error('Erro ao mesclar arquivos:', error);
         alert('Ocorreu um erro ao mesclar os arquivos. Por favor, tente novamente.');
