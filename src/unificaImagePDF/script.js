@@ -7,13 +7,17 @@ document.getElementById('mergeBtn').addEventListener('click', async () => {
         return;
     }
 
-    const reversedFiles = files.reverse(); // Reverte a ordem dos arquivos
-
     const pdfDoc = await PDFLib.PDFDocument.create();
 
     try {
-        for (let i = 0; i < reversedFiles.length; i++) {
-            const file = reversedFiles[i];
+        let progress = 0;
+        const progressBar = document.getElementById('progressBar');
+        const progressBarContainer = document.getElementById('progressBarContainer');
+        const PAGE_WIDTH = 1200; // Largura fixa da página
+        const PAGE_HEIGHT = 1200; // Altura fixa da página
+
+        for (let i = 0; i < files.length; i++) { // Percorre os arquivos na ordem original de seleção
+            const file = files[i];
             const reader = new FileReader();
             const dataUrl = await new Promise((resolve) => {
                 reader.onload = (event) => resolve(event.target.result);
@@ -35,22 +39,32 @@ document.getElementById('mergeBtn').addEventListener('click', async () => {
                     img.onerror = (error) => reject(error);
                 });
 
-                const page = pdfDoc.addPage([img.width, img.height]);
+                const page = pdfDoc.addPage([PAGE_WIDTH, PAGE_HEIGHT]); // Cria uma página com dimensões fixas
                 let embedImage;
                 if (file.type === 'image/jpeg') {
                     embedImage = await pdfDoc.embedJpg(dataUrl);
                 } else if (file.type === 'image/png') {
                     embedImage = await pdfDoc.embedPng(dataUrl);
                 }
+
+                const scaleFactor = Math.min(PAGE_WIDTH / img.width, PAGE_HEIGHT / img.height); // Calcula a escala para caber na página
+                const scaledWidth = img.width * scaleFactor;
+                const scaledHeight = img.height * scaleFactor;
+
                 page.drawImage(embedImage, {
-                    x: 0,
-                    y: 0,
-                    width: img.width,
-                    height: img.height,
+                    x: (PAGE_WIDTH - scaledWidth) / 2, // Centraliza a imagem na página
+                    y: (PAGE_HEIGHT - scaledHeight) / 2,
+                    width: scaledWidth,
+                    height: scaledHeight,
+                    preserveAspectRatio: true // Mantém a proporção da imagem
                 });
             } else {
                 alert('Formato de arquivo não suportado: ' + file.type);
             }
+
+            // Atualiza a barra de progresso
+            progress = ((i + 1) / files.length) * 100;
+            progressBar.style.width = `${progress}%`;
         }
 
         const mergedPdfBytes = await pdfDoc.save();
@@ -64,8 +78,18 @@ document.getElementById('mergeBtn').addEventListener('click', async () => {
         link.setAttribute('download', 'merged.pdf');
         output.appendChild(link);
 
-        // Limpar a lista de seleção de arquivos
-        fileInput.value = null;
+        // Remover o botão de download após o download
+        link.addEventListener('click', () => {
+            output.removeChild(link);
+        });
+
+        // Limpar a lista de seleção de arquivos de forma assíncrona
+        setTimeout(() => {
+            fileInput.value = null;
+        }, 100);
+        
+        // Esconde a barra de progresso após o download
+        progressBarContainer.style.display = 'none';
     } catch (error) {
         console.error('Erro ao mesclar arquivos:', error);
         alert('Ocorreu um erro ao mesclar os arquivos. Por favor, tente novamente.');
