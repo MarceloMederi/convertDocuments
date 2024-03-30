@@ -35,11 +35,7 @@ document.getElementById('mergeBtn').addEventListener('click', async () => {
                     img.onerror = (error) => reject(error);
                 });
 
-                const width = img.width; // Largura da imagem
-                const height = img.height; // Altura da imagem
-
-                const page = pdfDoc.addPage([width, height]); // Criando página com as dimensões da imagem
-
+                const page = pdfDoc.addPage([img.width, img.height]);
                 let embedImage;
                 if (file.type === 'image/jpeg') {
                     embedImage = await pdfDoc.embedJpg(dataUrl);
@@ -49,8 +45,8 @@ document.getElementById('mergeBtn').addEventListener('click', async () => {
                 page.drawImage(embedImage, {
                     x: 0,
                     y: 0,
-                    width: width,
-                    height: height,
+                    width: img.width,
+                    height: img.height,
                 });
             } else {
                 alert('Formato de arquivo não suportado: ' + file.type);
