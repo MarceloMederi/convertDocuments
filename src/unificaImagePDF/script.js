@@ -13,8 +13,6 @@ document.getElementById('mergeBtn').addEventListener('click', async () => {
         let progress = 0;
         const progressBar = document.getElementById('progressBar');
         const progressBarContainer = document.getElementById('progressBarContainer');
-        const PAGE_WIDTH = 816; // Largura fixa da página
-        const PAGE_HEIGHT = 1200; // Altura fixa da página
 
         for (let i = 0; i < files.length; i++) { // Percorre os arquivos na ordem original de seleção
             const file = files[i];
@@ -39,7 +37,8 @@ document.getElementById('mergeBtn').addEventListener('click', async () => {
                     img.onerror = (error) => reject(error);
                 });
 
-                const page = pdfDoc.addPage([PAGE_WIDTH, PAGE_HEIGHT]); // Cria uma página com dimensões fixas
+                const page = pdfDoc.addPage(); // Adiciona uma página sem especificar as dimensões
+
                 let embedImage;
                 if (file.type === 'image/jpeg') {
                     embedImage = await pdfDoc.embedJpg(dataUrl);
@@ -47,13 +46,13 @@ document.getElementById('mergeBtn').addEventListener('click', async () => {
                     embedImage = await pdfDoc.embedPng(dataUrl);
                 }
 
-                const scaleFactor = Math.min(PAGE_WIDTH / img.width, PAGE_HEIGHT / img.height); // Calcula a escala para caber na página
+                const scaleFactor = 2.5; // Ajuste a escala conforme necessário para as imagens ficarem maiores
                 const scaledWidth = img.width * scaleFactor;
                 const scaledHeight = img.height * scaleFactor;
 
                 page.drawImage(embedImage, {
-                    x: (PAGE_WIDTH - scaledWidth) / 2, // Centraliza a imagem na página
-                    y: (PAGE_HEIGHT - scaledHeight) / 2,
+                    x: (page.getWidth() - scaledWidth) / 2, // Centraliza a imagem na página
+                    y: (page.getHeight() - scaledHeight) / 2,
                     width: scaledWidth,
                     height: scaledHeight,
                 });
