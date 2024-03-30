@@ -49,7 +49,7 @@ document.getElementById('mergeBtn').addEventListener('click', async () => {
 
                 const scaleFactor = Math.min(PAGE_WIDTH / img.width, PAGE_HEIGHT / img.height) * 1.5; // Calcula a escala para caber na página
                 const scaledWidth = img.width * scaleFactor;
-                const scaledHeight = img.height * scaleFactor;
+                const scaledHeight = img.height * scaleFactor * 1.2;
 
                 page.drawImage(embedImage, {
                     x: (PAGE_WIDTH - scaledWidth) / 2, // Centraliza a imagem na página
