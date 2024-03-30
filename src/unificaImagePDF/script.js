@@ -47,15 +47,15 @@ document.getElementById('mergeBtn').addEventListener('click', async () => {
                     embedImage = await pdfDoc.embedPng(dataUrl);
                 }
 
-                const scaleFactor = Math.min(PAGE_WIDTH / img.width, PAGE_HEIGHT / img.height) * 1.2; // Calcula a escala para caber na página
+                const scaleFactor = Math.min(PAGE_WIDTH / img.width, PAGE_HEIGHT / img.height) * 1.5; // Calcula a escala para caber na página
                 const scaledWidth = img.width * scaleFactor;
                 const scaledHeight = img.height * scaleFactor;
 
                 page.drawImage(embedImage, {
                     x: (PAGE_WIDTH - scaledWidth) / 2, // Centraliza a imagem na página
                     y: (PAGE_HEIGHT - scaledHeight) / 2,
-                    width: 900,
-                    height: 900,
+                    width: scaledWidth,
+                    height: scaledHeight,
                 });
             } else {
                 alert('Formato de arquivo não suportado: ' + file.type);
