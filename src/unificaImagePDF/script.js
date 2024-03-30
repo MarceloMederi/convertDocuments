@@ -47,7 +47,7 @@ document.getElementById('mergeBtn').addEventListener('click', async () => {
                     embedImage = await pdfDoc.embedPng(dataUrl);
                 }
 
-                const scaleFactor = Math.min(PAGE_WIDTH / img.width, PAGE_HEIGHT / img.height); // Calcula a escala para caber na página
+                const scaleFactor = Math.min(PAGE_WIDTH / img.width, PAGE_HEIGHT / img.height) * 1.2; // Calcula a escala para caber na página
                 const scaledWidth = img.width * scaleFactor;
                 const scaledHeight = img.height * scaleFactor;
 
