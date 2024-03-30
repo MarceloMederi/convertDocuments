@@ -56,6 +56,7 @@ document.getElementById('mergeBtn').addEventListener('click', async () => {
                     y: (PAGE_HEIGHT - scaledHeight) / 2,
                     width: scaledWidth,
                     height: scaledHeight,
+                    preserveAspectRatio: true // Mantém a proporção da imagem
                 });
             } else {
                 alert('Formato de arquivo não suportado: ' + file.type);
