@@ -13,8 +13,8 @@ document.getElementById('mergeBtn').addEventListener('click', async () => {
         let progress = 0;
         const progressBar = document.getElementById('progressBar');
         const progressBarContainer = document.getElementById('progressBarContainer');
-        const PAGE_WIDTH = 600; // Largura fixa da página
-        const PAGE_HEIGHT = 800; // Altura fixa da página
+        const PAGE_WIDTH = 816; // Largura fixa da página
+        const PAGE_HEIGHT = 1200; // Altura fixa da página
 
         for (let i = 0; i < files.length; i++) { // Percorre os arquivos na ordem original de seleção
             const file = files[i];
