@@ -7,13 +7,11 @@ document.getElementById('mergeBtn').addEventListener('click', async () => {
         return;
     }
 
-    const reversedFiles = files.reverse(); // Reverte a ordem dos arquivos
-
     const pdfDoc = await PDFLib.PDFDocument.create();
 
     try {
-        for (let i = 0; i < reversedFiles.length; i++) {
-            const file = reversedFiles[i];
+        for (let i = 0; i < files.length; i++) { // Percorre os arquivos na ordem original
+            const file = files[i];
             const reader = new FileReader();
             const dataUrl = await new Promise((resolve) => {
                 reader.onload = (event) => resolve(event.target.result);
