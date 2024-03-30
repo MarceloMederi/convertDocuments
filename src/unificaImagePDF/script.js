@@ -53,10 +53,9 @@ document.getElementById('mergeBtn').addEventListener('click', async () => {
 
                 page.drawImage(embedImage, {
                     x: (PAGE_WIDTH - scaledWidth) / 2, // Centraliza a imagem na página
-                    y: (PAGE_HEIGHT - scaledHeight) / 4,
+                    y: (PAGE_HEIGHT - scaledHeight) / 2,
                     width: scaledWidth,
                     height: scaledHeight,
-                    preserveAspectRatio: true // Mantém a proporção da imagem
                 });
             } else {
                 alert('Formato de arquivo não suportado: ' + file.type);
