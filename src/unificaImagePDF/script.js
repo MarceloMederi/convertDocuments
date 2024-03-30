@@ -10,6 +10,10 @@ document.getElementById('mergeBtn').addEventListener('click', async () => {
     const pdfDoc = await PDFLib.PDFDocument.create();
 
     try {
+        let progress = 0;
+        const progressBar = document.getElementById('progressBar');
+        const progressBarContainer = document.getElementById('progressBarContainer');
+
         for (let i = 0; i < files.length; i++) { // Percorre os arquivos na ordem original de seleção
             const file = files[i];
             const reader = new FileReader();
@@ -49,6 +53,10 @@ document.getElementById('mergeBtn').addEventListener('click', async () => {
             } else {
                 alert('Formato de arquivo não suportado: ' + file.type);
             }
+
+            // Atualiza a barra de progresso
+            progress = ((i + 1) / files.length) * 100;
+            progressBar.style.width = `${progress}%`;
         }
 
         const mergedPdfBytes = await pdfDoc.save();
@@ -71,6 +79,9 @@ document.getElementById('mergeBtn').addEventListener('click', async () => {
         setTimeout(() => {
             fileInput.value = null;
         }, 100);
+        
+        // Esconde a barra de progresso após o download
+        progressBarContainer.style.display = 'none';
     } catch (error) {
         console.error('Erro ao mesclar arquivos:', error);
         alert('Ocorreu um erro ao mesclar os arquivos. Por favor, tente novamente.');
