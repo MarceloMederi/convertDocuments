@@ -1,73 +1,79 @@
 /* style.css */
 
 /* Reset CSS */
+/* Define uma caixa de modelo de borda de caixa para todos os elementos */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0; /* Define a margem como zero para todos os elementos */
+    padding: 0; /* Define o preenchimento como zero para todos os elementos */
+    box-sizing: border-box; /* Garante que a largura e a altura dos elementos incluam o preenchimento e a borda, mas não a margem */
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: radial-gradient(circle, #ffecd2, #fcb69f);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Define a fonte do corpo do texto */
+    background: radial-gradient(circle, #ffecd2, #fcb69f); /* Cria um fundo com gradiente radial */
 }
 
+header {
+    background-color: #007bff; /* Cor de fundo do cabeçalho */
+    color: #fff; /* Cor do texto do cabeçalho */
+    padding: 20px 0; /* Espaçamento interno do cabeçalho */
+    text-align: center; /* Alinha o texto ao centro */
+}
+
+/* Estilos do título */
 h1 {
-    text-align: center;
-    margin-top: 50px;
-    color: #333;
+    font-size: 28px; /* Define o tamanho da fonte do título */
 }
 
 input[type="file"] {
-    margin: 20px auto;
-    display: block;
+    margin: 20px auto; /* Define a margem superior e inferior como 20px e a margem esquerda e direita como automática */
+    display: block; /* Define o elemento como bloco para que ele ocupe toda a largura disponível */
 }
 
 button {
-    display: block;
-    margin: 0 auto;
-    padding: 10px 20px;
-    border: none;
-    background-color: #007bff;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    display: block; /* Define o elemento como bloco para que ele ocupe toda a largura disponível */
+    margin: 0 auto; /* Define a margem superior e inferior como 0 e a margem esquerda e direita como automática */
+    padding: 10px 20px; /* Define o preenchimento do botão */
+    border: none; /* Remove a borda do botão */
+    background-color: #007bff; /* Cor de fundo do botão */
+    color: #fff; /* Cor do texto do botão */
+    font-size: 16px; /* Define o tamanho da fonte do botão */
+    cursor: pointer; /* Altera o cursor do mouse quando passa sobre o botão */
+    border-radius: 5px; /* Define a borda arredondada do botão */
+    transition: background-color 0.3s ease; /* Adiciona uma transição suave na cor de fundo */
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #0056b3; /* Cor de fundo do botão ao passar o mouse */
 }
 
 #progressBarContainer {
-    width: 30%;
-    background-color: #f0f0f0;
-    border-radius: 5px;
-    margin: 0 auto;
-    margin-bottom: 10px;
+    width: 30%; /* Define a largura da barra de progresso */
+    background-color: #f0f0f0; /* Cor de fundo da barra de progresso */
+    border-radius: 5px; /* Define a borda arredondada da barra de progresso */
+    margin: 0 auto; /* Define a margem superior e inferior como 0 e a margem esquerda e direita como automática */
+    margin-bottom: 10px; /* Define a margem inferior da barra de progresso */
 }
 
 #progressBar {
-    height: 20px; /* Ajuste o tamanho vertical da barra de progresso */
-    background-color: #4caf50;
-    width: 0;
-    border-radius: 5px;
+    height: 20px; /* Define a altura da barra de progresso */
+    background-color: #4caf50; /* Cor de fundo da barra de progresso */
+    width: 0; /* Define a largura inicial da barra de progresso */
+    border-radius: 5px; /* Define a borda arredondada da barra de progresso */
 }
 
-
 #output {
-    margin: 20px auto;
-    text-align: center;
+    margin: 20px auto; /* Define a margem superior e inferior como 20px e a margem esquerda e direita como automática */
+    text-align: center; /* Alinha o texto ao centro */
 }
 
 footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+    background-color: #333; /* Cor de fundo do rodapé */
+    color: #fff; /* Cor do texto do rodapé */
+    text-align: center; /* Alinha o texto ao centro */
+    padding: 10px 0; /* Espaçamento interno do rodapé */
+    position: fixed; /* Define o posicionamento como fixo */
+    bottom: 0; /* Alinha o rodapé ao fundo da janela de visualização */
+    left: 0; /* Alinha o rodapé à esquerda */
+    width: 100%; /* Define a largura total do rodapé */
 }
