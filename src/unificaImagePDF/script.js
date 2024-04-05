@@ -11,6 +11,13 @@ document.getElementById('mergeBtn').addEventListener('click', async function () 
             return;
         }
 
+        // Verifica se os arquivos selecionados contêm apenas extensões suportadas
+        var unsupportedFiles = files.filter(file => !['image/jpeg', 'image/png', 'application/pdf'].includes(file.type));
+        if (unsupportedFiles.length > 0) {
+            alert('Apenas arquivos JPEG, PNG e PDF são suportados para mesclagem.');
+            return;
+        }
+
         // Cria um novo documento PDF
         var pdfDoc = await PDFLib.PDFDocument.create();
 
