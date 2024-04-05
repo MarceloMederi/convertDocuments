@@ -1,5 +1,7 @@
 # Conversor de Documentos
 
+![Descrição da imagem](https://raw.githubusercontent.com/MarceloMederi/convertDocuments/main/src/fotos/1.png)
+
 * Este é um projeto desenvolvido por Marcelo Medeiros, Front-End Developer, que consiste em um Conversor de Documentos, permitindo mesclar imagens e arquivos PDF em um único documento PDF.
 
 # Funcionalidades
@@ -34,6 +36,8 @@ O projeto utiliza as seguintes tecnologias:
 * Clique no botão "Escolher Arquivos" para selecionar as imagens e arquivos PDF que deseja mesclar.
 * Clique no botão "Mesclar Imagens e PDFs" para iniciar o processo de mesclagem.
 * Aguarde o término do processo. O arquivo PDF mesclado estará disponível para download.
+
+![Descrição da imagem](https://raw.githubusercontent.com/MarceloMederi/convertDocuments/main/src/fotos/2.png)
 
 # Deploy
 
