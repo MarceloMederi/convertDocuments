@@ -116,7 +116,7 @@ document.getElementById('mergeBtn').addEventListener('click', async function () 
         var link = document.createElement('a');
         link.href = url;
         link.textContent = 'Download PDF Mesclado';
-        link.setAttribute('download', 'merged.pdf');
+        link.setAttribute('download', 'PDF.pdf');
         output.appendChild(link);
 
         // Remove o link de download ao clicar nele
