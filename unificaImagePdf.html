@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <!-- Metadados -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Link para o arquivo CSS -->
+    <link rel="stylesheet" href="src/unificaImagePDF/style.css">
+
+    <!-- Título da página -->
+    <title>Mesclar Imagens e PDFs</title>
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <h1>Mesclar Imagens e PDFs</h1>
+    </header>
+
+    <!-- Input para seleção de arquivos -->
+    <input type="file" id="fileInput" multiple>
+
+    <!-- Barra de progresso para exibir o progresso do processo de mesclagem -->
+    <div id="progressBarContainer">
+        <div id="progressBar"></div>
+    </div>
+
+    <!-- Botão para iniciar a mesclagem -->
+    <button id="mergeBtn">Mesclar Imagens e PDFs</button>
+
+    <!-- Div para exibir o resultado da mesclagem -->
+    <div id="output"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.10.0/dist/pdf-lib.js"></script>
+    <script src="src/unificaImagePDF/script.js"></script>
+
+    <!-- Rodapé -->
+    <footer>
+        Desenvolvido por Marcelo Medeiros, Front-End Developer.
+    </footer>
+</body>
+</html>
