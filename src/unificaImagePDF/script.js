@@ -12,7 +12,9 @@ document.getElementById('mergeBtn').addEventListener('click', async function () 
         }
 
         // Verifica se os arquivos selecionados contêm apenas extensões suportadas
-        var unsupportedFiles = files.filter(file => !['image/jpeg', 'image/png', 'application/pdf'].includes(file.type));
+        var unsupportedFiles = files.filter(function(file) {
+            return !['image/jpeg', 'image/png', 'application/pdf'].includes(file.type);
+        });
         if (unsupportedFiles.length > 0) {
             alert('Apenas arquivos JPEG, PNG e PDF são suportados para mesclagem.');
             return;
@@ -111,6 +113,7 @@ document.getElementById('mergeBtn').addEventListener('click', async function () 
             // Atualiza o progresso da mesclagem
             progress = ((i + 1) / files.length) * 100;
             progressBar.style.width = progress + '%';
+            setColor(progress);
         }
 
         // Salva o documento PDF mesclado e cria um link para download
@@ -126,18 +129,35 @@ document.getElementById('mergeBtn').addEventListener('click', async function () 
         link.setAttribute('download', 'PDF.pdf');
         output.appendChild(link);
 
-        // Remove o link de download ao clicar nele
-        link.addEventListener('click', function () {
-            output.removeChild(link);
+        // Esconde o link de download
+        link.style.display = 'none';
+
+        // Inicia o download do PDF automaticamente
+        var downloadEvent = new MouseEvent('click', {
+            view: window,
+            bubbles: true,
+            cancelable: true
         });
+        link.dispatchEvent(downloadEvent);
+
+        // Define a cor da barra de progresso com base na porcentagem concluída
+        function setColor(progress) {
+            if (progress < 50) {
+                progressBar.style.backgroundColor = '#B7E1CD'; // Se menos de 50% concluído, cor Verde claro
+            } else if (progress >= 50 && progress < 80) {
+                progressBar.style.backgroundColor = '#80C49F'; // Se entre 50% e 80% concluído, cor Verde médio
+            } else {
+                progressBar.style.backgroundColor = '#49796B'; // Se mais de 80% concluído, cor Verde escuro
+            }
+        }
 
         // Limpa o valor do elemento de entrada de arquivo após um curto período de tempo
         setTimeout(function () {
             fileInput.value = null;
+            progressBar.style.width = '0%';
+            setColor(0); // Define a cor da barra de progresso para a porcentagem zero
         }, 100);
 
-        // Oculta a barra de progresso
-        progressBarContainer.style.display = 'none';
     } catch (error) {
         // Captura e trata erros
         console.error('Erro ao mesclar arquivos:', error);
