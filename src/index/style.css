@@ -68,3 +68,9 @@ footer {
     left: 0; /* Alinhar à esquerda */
     width: 100%; /* Largura total */
 }
+
+footer a {
+    color: #ffcc00;
+    text-decoration: none;
+    font-weight: bold;
+}
