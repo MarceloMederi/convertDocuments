@@ -43,6 +43,7 @@ input[type="file"] {
     border-radius: 5px;
     width: 80%; /* Largura responsiva */
     max-width: 400px; /* Largura máxima */
+    background: white; /* Fundo branco para o input */
 }
 
 /* Estilo da barra de progresso */
@@ -80,7 +81,6 @@ input[type="file"] {
     color: #ffcc00;
 }
 
-
 /* Rodapé */
 footer {
     color: white;
@@ -88,18 +88,32 @@ footer {
     padding: 1rem 0;
     position: relative;
     margin-top: 20px; /* Adiciona espaço entre conteúdo e rodapé */
+    width: auto; /* Torna a largura automática */
 }
 
 /* Estilo do rodapé */
 footer p {
     margin: 0;
     font-size: 0.9rem;
+    background-color: black; /* Fundo preto para o rodapé */
+}
+
+footer p a {
+    text-decoration: none;
+    color: white; /* Cor do link no rodapé */
+    font-weight: bold; /* Negrito para o link */
+    transition: color 0.3s; /* Transição suave para a cor */
+}
+
+/* Efeito de hover no link do rodapé */
+footer p a:hover {
+    color: #ffcc00; /* Cor do link ao passar o mouse */
 }
 
 /* Responsividade */
 @media (max-width: 768px) {
     header h1 {
-        font-size: 2.5rem;
+        font-size: 2.5rem; /* Tamanho do título em telas menores */
     }
 
     input[type="file"],

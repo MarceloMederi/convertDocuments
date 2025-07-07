@@ -60,6 +60,7 @@ nav ul li a {
     border: 2px solid transparent; /* Borda para o efeito de hover */
     border-radius: 5px; /* Bordas arredondadas */
     transition: background 0.3s, color 0.3s, border 0.3s;
+    background-color: black;
 }
 
 /* Efeito de hover no link de navegação */
@@ -81,8 +82,25 @@ footer {
 
 /* Estilo do rodapé */
 footer p {
-    margin: 0;
+    margin: 0 auto;
+    width: 50%;
     font-size: 0.9rem;
+    background-color: black;
+}
+
+footer p a {
+    text-decoration: none;
+    color: white; /* Define a cor do link como branco para melhor legibilidade */
+    font-weight: bold; /* Torna o texto do link em negrito para destaque */
+    transition: color 0.3s, background 0.3s; /* Transição suave para hover */
+    padding: 2px 4px; /* Adiciona um pequeno preenchimento ao link */
+    border-radius: 3px; /* Bordas arredondadas para um efeito mais suave */
+}
+
+/* Efeito de hover no link do rodapé */
+footer p a:hover {
+    color: #ffcc00; /* Muda a cor do texto ao passar o mouse */
+    background: rgba(255, 255, 255, 0.2); /* Adiciona um fundo semi-transparente ao hover */
 }
 
 /* Responsividade */
