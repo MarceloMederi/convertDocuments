@@ -1,85 +1,110 @@
-/* style.css */
-
-/* Reset CSS */
-/* Define uma caixa de modelo de borda de caixa para todos os elementos */
+/* Reset básico */
 * {
-    margin: 0; /* Define a margem como zero para todos os elementos */
-    padding: 0; /* Define o preenchimento como zero para todos os elementos */
-    box-sizing: border-box; /* Garante que a largura e a altura dos elementos incluam o preenchimento e a borda, mas não a margem */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+/* Estilo do corpo */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Define a fonte do corpo do texto */
-    background: radial-gradient(circle, #ffecd2, #fcb69f); /* Cria um fundo com gradiente radial */
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(to right, #4facfe, #00f2fe); /* Fundo gradiente */
+    text-align: center; /* Centraliza o conteúdo */
 }
 
+/* Cabeçalho */
 header {
-    background-color: #007bff; /* Cor de fundo do cabeçalho */
-    color: #fff; /* Cor do texto do cabeçalho */
-    padding: 20px 0; /* Espaçamento interno do cabeçalho */
-    text-align: center; /* Alinha o texto ao centro */
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
-/* Estilos do título */
-h1 {
-    font-size: 28px; /* Define o tamanho da fonte do título */
+/* Título do cabeçalho */
+header h1 {
+    font-size: 3rem;
+    transition: transform 0.5s;
 }
 
+/* Efeito de hover no título */
+header h1:hover {
+    transform: scale(1.05);
+}
+
+/* Estilo do input de arquivo */
 input[type="file"] {
-    margin: 20px auto; /* Define a margem superior e inferior como 20px e a margem esquerda e direita como automática */
-    display: block; /* Define o elemento como bloco para que ele ocupe toda a largura disponível */
+    margin: 20px 0;
+    padding: 10px;
+    border: 2px solid #333;
+    border-radius: 5px;
+    width: 80%; /* Largura responsiva */
+    max-width: 400px; /* Largura máxima */
 }
 
-button {
-    display: block; /* Define o elemento como bloco para que ele ocupe toda a largura disponível */
-    margin: 0 auto; /* Define a margem superior e inferior como 0 e a margem esquerda e direita como automática */
-    padding: 10px 20px; /* Define o preenchimento do botão */
-    border: none; /* Remove a borda do botão */
-    background-color: #007bff; /* Cor de fundo do botão */
-    color: #fff; /* Cor do texto do botão */
-    font-size: 16px; /* Define o tamanho da fonte do botão */
-    cursor: pointer; /* Altera o cursor do mouse quando passa sobre o botão */
-    border-radius: 5px; /* Define a borda arredondada do botão */
-    transition: background-color 0.3s ease; /* Adiciona uma transição suave na cor de fundo */
-}
-
-button:hover {
-    background-color: #0056b3; /* Cor de fundo do botão ao passar o mouse */
-}
-
+/* Estilo da barra de progresso */
 #progressBarContainer {
-    width: 30%; /* Define a largura da barra de progresso */
-    background-color: #f0f0f0; /* Cor de fundo da barra de progresso */
-    border-radius: 5px; /* Define a borda arredondada da barra de progresso */
-    margin: 0 auto; /* Define a margem superior e inferior como 0 e a margem esquerda e direita como automática */
-    margin-bottom: 10px; /* Define a margem inferior da barra de progresso */
+    width: 80%;
+    max-width: 400px; /* Largura máxima */
+    background: #e0e0e0;
+    border-radius: 5px;
+    margin: 20px auto; /* Centraliza a barra */
+    overflow: hidden; /* Para evitar que o conteúdo exceda os limites */
 }
 
 #progressBar {
-    height: 20px; /* Define a altura da barra de progresso */
-    background-color: #4caf50; /* Cor de fundo da barra de progresso */
-    width: 0; /* Define a largura inicial da barra de progresso */
-    border-radius: 5px; /* Define a borda arredondada da barra de progresso */
+    height: 20px;
+    width: 0; /* Inicialmente 0% */
+    background: #4caf50; /* Cor da barra de progresso */
+    transition: width 0.4s; /* Transição suave */
 }
 
-#output {
-    margin: 20px auto; /* Define a margem superior e inferior como 20px e a margem esquerda e direita como automática */
-    text-align: center; /* Alinha o texto ao centro */
-}
-
-footer {
-    background-color: #333; /* Cor de fundo do rodapé */
-    color: #fff; /* Cor do texto do rodapé */
-    text-align: center; /* Alinha o texto ao centro */
-    padding: 10px 0; /* Espaçamento interno do rodapé */
-    position: fixed; /* Define o posicionamento como fixo */
-    bottom: 0; /* Alinha o rodapé ao fundo da janela de visualização */
-    left: 0; /* Alinha o rodapé à esquerda */
-    width: 100%; /* Define a largura total do rodapé */
-}
-
-footer a {
-    color: #ffcc00;
-    text-decoration: none;
+/* Botão para mesclar */
+#mergeBtn {
+    background: #ffcc00;
+    color: #333;
+    border: none;
+    padding: 10px 15px; /* Preenchimento do botão */
+    border-radius: 5px; /* Bordas arredondadas */
     font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+/* Efeito de hover no botão */
+#mergeBtn:hover {
+    background: #333;
+    color: #ffcc00;
+}
+
+
+/* Rodapé */
+footer {
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    position: relative;
+    margin-top: 20px; /* Adiciona espaço entre conteúdo e rodapé */
+}
+
+/* Estilo do rodapé */
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.5rem;
+    }
+
+    input[type="file"],
+    #mergeBtn,
+    #progressBarContainer {
+        width: 90%; /* Aumenta a largura em telas menores */
+    }
 }
